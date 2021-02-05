@@ -15,7 +15,6 @@ public class Menu {
 		
 		D.cargardatos();
 		 C = new control(D.getP());
-		
 		 M();
 	}
 	
@@ -27,7 +26,8 @@ public class Menu {
 			System.out.println("\n---------------MENU------------------ ");
 			System.out.println("1-Buscar por Id    | 2-Buscar por nombre");
 			System.out.println("3-Retirar por Id   | 4-Busqueda en arbol");
-			System.out.println("5-Ver stock por Id | 0- Cerrar");
+			System.out.println("5-Busqueda Binaria | 6-Ver Stock");
+			System.out.println("0- Salir");
 			op=input.nextInt();
 			input.nextLine();
 			
@@ -41,7 +41,6 @@ public class Menu {
 			else {
 			System.out.println(p.toString());
 			}
-			
 			break;
 		case 2:
 			System.out.println("Ingrese el Nombre");
@@ -61,16 +60,18 @@ public class Menu {
 			System.out.println("Informe el Id");
 			 id = input.nextInt();
 			 input.nextLine();
-			C.verArbol(id);
+			C.BuscarArbol(id);
 			break;
 		case 5:
+			System.out.println("Informe el Id");
+			 id = input.nextInt();
+			 input.nextLine();
+			C.BusquedaBinaria(id);
+			break;
+		case 6:
 			System.out.println("Ingresar ID :");
 			id= input.nextInt();
 			C.verStock(id);
-			
-			break;
-		case 6:
-			
 			break;
 		default:
 			break;

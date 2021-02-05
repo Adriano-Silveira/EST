@@ -26,7 +26,7 @@ public class Datos {
 	
 	public void cargardatos() {
 		System.out.println("Cargando datos...");
-		try {
+		try {													//Cambiar dirrecion del archivo para pruebas//
 			 P = new CsvToBeanBuilder<Producto>(new FileReader("C:\\Users\\anato\\OneDrive\\Escritorio\\ERP_System\\Products.csv"))
 			       .withType(Producto.class).build().parse();
 		} catch (Exception e) {	

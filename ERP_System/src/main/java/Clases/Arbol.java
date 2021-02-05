@@ -9,7 +9,6 @@ public class Arbol {
 	}
 	
 	public void add(int i, Producto P) {
-
 		Nodo n = new Nodo(i);
 		n.produto = P;
 		if(raiz ==null) {
@@ -32,27 +31,26 @@ public class Arbol {
 		}	
 	}
 	
-	public void buscarP(int id, Nodo N) {
+	public void buscarProducto(int id, Nodo N) {
 			while(N !=null) {
 		if(N.produto.getId() == id) {
 			System.out.println(N.produto.toString());
 			break;
 		}else{
-				buscarP(id,N.right);
+				buscarProducto(id,N.right);
 				break;
 		}
 	}
 			if(N != null) {
-			buscarP(id,N.left);
+			buscarProducto(id,N.left);
 			}
 	}
 	
-	public void recorrer(Nodo n) {
+	public void recorrerArbol(Nodo n) {
 		if(n !=null) {
-			
-			recorrer(n.right);
+			recorrerArbol(n.right);
 			System.out.println("Objeto :"+ n.index + " "+ n.produto.toString());	
-			recorrer(n.left);
+			recorrerArbol(n.left);
 		}
 	}
 	

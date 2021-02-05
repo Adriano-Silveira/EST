@@ -26,11 +26,6 @@ public class control {
 		
 	}
 	
-	public void verArbol(int idp) {
-		
-		A.buscarP(idp,A.raiz);
-	}
-	
 	public Producto BuscarId(int Id) {
 		
 		for (Producto producto : P) {
@@ -80,18 +75,15 @@ public class control {
 								break;
 							}	
 				}
-				
 				if(cant < stock) {
 					if(cant >= pro.getStock().element().getCantidad()) {
 						cant -= pro.getStock().element().getCantidad();
 						System.out.println("Removiendo = " +pro.getStock().poll()+ "  de la fila");
-						
 					}else if(cant < pro.getStock().element().getCantidad()) {
 						pro.getStock().element().setCantidad(pro.getStock().element().getCantidad() - cant);
 					System.out.println("Removiendo " + cant + " del Stock");
 					cant =0;
 					}
-					
 				}
 			}
 		}
@@ -105,27 +97,61 @@ public class control {
 		for (Producto pro : P) {
 			if(id==pro.getId()) {
 			for(Stock S : pro.getStock()) {
-				
 				System.out.println(S.toString());
 				stock += S.getCantidad();
-				
 			}
 			System.out.println(" Stock total "+ stock);
+			break;
+			}
+		}
+	}
+	
+	public void BuscarArbol(int idp) {
+		
+		A.buscarProducto(idp,A.raiz);
+	}
+	
+	public void BusquedaBinaria(int id) {
+		int max = P.size()-1, min = 0, med;
+		boolean verifi= false;
+		while(min <= max) {
+			 med = (max + min)/2;
+			 
+			if(P.get(med).getId()== id) {
+				System.out.println(P.get(med));
+				cantStock(id);
+				verifi=true;
+				break;
+			}else if(id <P.get(med).getId()) {
+				max = med -1;
+				
+			}else {
+				min = med+1;
+			}	
+		}
+		if(verifi!=true) {
+			System.out.println("No encontrado");
+		}	
+	}
+	
+	public void cantStock(int id) {	
+		int stock=0;
+		for (Producto pro : P) {
+			if(id==pro.getId()) {
+			for(Stock S : pro.getStock()) {
+				stock += S.getCantidad();
+			}
+			System.out.println("Stock total "+ stock);
 			break;
 			}
 		}
 	
 	}
 	
-	
 	public void listarp() {
 		for (Producto producto : P) {
 			System.out.println(producto.toString());
 		}
 	}
-	
-	
-	
-	
-	
+		
 }
